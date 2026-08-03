@@ -5,6 +5,13 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
+    base: '/aicha-pos/', // أضف هذا السطر هنا ليطابق اسم مستودعك
+    plugins: [react(), tailwindcss()],
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, './src'),
+      },
+    },
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
