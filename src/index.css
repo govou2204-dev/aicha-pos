@@ -1,0 +1,125 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Cairo', 'Tajawal', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  }
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.4);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.6);
+}
+
+/* Thermal Printer & A4 Invoice Print Styles */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 8mm;
+  }
+
+  html, body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    height: auto !important;
+  }
+
+  /* Hide everything except the print container */
+  body * {
+    visibility: hidden !important;
+  }
+
+  /* Reset all fixed/absolute modal overlay containers so they do not clip or scroll */
+  div.fixed, div.overflow-y-auto, div.overflow-x-auto, div.backdrop-blur-md {
+    position: static !important;
+    overflow: visible !important;
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+    border: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    height: auto !important;
+  }
+
+  #printable-receipt, #printable-receipt * {
+    visibility: visible !important;
+  }
+
+  #printable-receipt {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    color: #0f172a !important;
+    font-family: 'Cairo', 'Tajawal', system-ui, sans-serif !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    overflow: visible !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  /* Force standard hex colors for html2canvas compatibility */
+  #printable-receipt .bg-white { background-color: #ffffff !important; }
+  #printable-receipt .bg-slate-50 { background-color: #f8fafc !important; }
+  #printable-receipt .bg-blue-600 { background-color: #2563eb !important; }
+  #printable-receipt .text-blue-600 { color: #2563eb !important; }
+  #printable-receipt .text-blue-900 { color: #1e3a8a !important; }
+  #printable-receipt .text-blue-700 { color: #1d4ed8 !important; }
+  #printable-receipt .border-blue-600 { border-color: #2563eb !important; }
+  #printable-receipt .border-blue-500 { border-color: #3b82f6 !important; }
+  #printable-receipt .border-blue-200 { border-color: #bfdbfe !important; }
+  #printable-receipt .text-slate-900 { color: #0f172a !important; }
+  #printable-receipt .text-slate-800 { color: #1e293b !important; }
+  #printable-receipt .text-slate-700 { color: #334155 !important; }
+  #printable-receipt .text-slate-600 { color: #475569 !important; }
+  #printable-receipt .text-slate-500 { color: #64748b !important; }
+  #printable-receipt .text-slate-400 { color: #94a3b8 !important; }
+  #printable-receipt .border-slate-200 { border-color: #e2e8f0 !important; }
+  #printable-receipt .border-slate-300 { border-color: #cbd5e1 !important; }
+  #printable-receipt .border-slate-400 { border-color: #94a3b8 !important; }
+  #printable-receipt .text-rose-600 { color: #e11d48 !important; }
+  #printable-receipt .text-emerald-700 { color: #047857 !important; }
+
+  /* Table print optimization: expand fully without horizontal scrollbars or clipping */
+  #printable-receipt table {
+    width: 100% !important;
+    min-width: 0 !important;
+    table-layout: auto !important;
+    border-collapse: collapse !important;
+  }
+
+  #printable-receipt th,
+  #printable-receipt td {
+    word-break: normal !important;
+    white-space: normal !important;
+    overflow: visible !important;
+  }
+
+  .no-print, .no-print * {
+    display: none !important;
+    visibility: hidden !important;
+  }
+}

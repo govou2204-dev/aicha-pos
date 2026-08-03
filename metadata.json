@@ -1,0 +1,6 @@
+{
+  "name": "Aïcha POS Pro",
+  "description": "نظام إدارة المكتبات والمبيعات والمخزون والمحاسبة المتكامل v1.0 - مكتبة عائشة",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
